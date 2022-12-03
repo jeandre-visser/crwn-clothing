@@ -33,9 +33,12 @@ function App() {
   
   return (
     <div className="categories-container">
-      {categories.map(({ title, id }) => (
+      {categories.map(({ title, id, imageUrl }) => (
         <div className="category-container">
-          <div className="background-img" />
+          <div 
+            className="background-image" 
+            style={{ backgroundImage: `url(${imageUrl})`}}  
+          />
           <div  className="category-body-container"
           key={id}>
             <h2>{title}</h2>
