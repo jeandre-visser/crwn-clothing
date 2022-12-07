@@ -61,7 +61,7 @@ const SignInForm = () => {
   return (
     <div className="sign-in-container">
       <h2>Already Have An Account?</h2>
-      <span>Sign in with email and password</span>
+      <span>Sign in with your email and password</span>
       <form onSubmit={handleSubmit}>
         <FormInput 
           label="Email"
