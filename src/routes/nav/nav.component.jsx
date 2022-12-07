@@ -3,11 +3,18 @@ import { Fragment, useContext } from 'react';
 import './nav.styles.scss';
 import { ReactComponent as CrwnLogo } from '../../assets/crown.svg';
 
+import { signOutUser } from '../../utils/firebase/firebase.utils';
+
 import { UserContext } from '../../contexts/user.context';
 
 const Navbar = () => {
 
-  const { currentUser } = useContext(UserContext);
+  const { currentUser, setCurrentUser } = useContext(UserContext);
+
+  const signOutHandler = async () => {
+    await signOutUser();
+    setCurrentUser(null);
+  }
   
 
   return ( 
@@ -21,7 +28,7 @@ const Navbar = () => {
             SHOP
           </Link>
           {currentUser ? (
-            <span className="nav-link">SIGN OUT</span>
+            <span className="nav-link" onClick={signOutHandler}>SIGN OUT</span>
           ) : (
             <Link to='/auth' className="nav-link">
               SIGN IN
