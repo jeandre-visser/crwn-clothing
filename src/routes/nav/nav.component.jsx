@@ -8,9 +8,9 @@ import { UserContext } from '../../contexts/user.context';
 const Navbar = () => {
 
   const { currentUser } = useContext(UserContext);
-  console.log(currentUser)
   
-  return (
+
+  return ( 
     <Fragment>
       <div className="nav" >
         <Link to='/' className="logo-container">
@@ -20,9 +20,14 @@ const Navbar = () => {
           <Link to='/shop' className="nav-link">
             SHOP
           </Link>
-          <Link to='/auth' className="nav-link">
-            SIGN IN
-          </Link>
+          {currentUser ? (
+            <span className="nav-link">SIGN OUT</span>
+          ) : (
+            <Link to='/auth' className="nav-link">
+              SIGN IN
+            </Link>
+          )}
+          
         </div>
       </div>
       <Outlet />
