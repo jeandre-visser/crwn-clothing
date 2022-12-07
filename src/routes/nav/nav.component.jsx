@@ -9,13 +9,8 @@ import { UserContext } from '../../contexts/user.context';
 
 const Navbar = () => {
 
-  const { currentUser, setCurrentUser } = useContext(UserContext);
+  const { currentUser } = useContext(UserContext);
 
-  const signOutHandler = async () => {
-    await signOutUser();
-    setCurrentUser(null);
-  }
-  
 
   return ( 
     <Fragment>
@@ -28,7 +23,7 @@ const Navbar = () => {
             SHOP
           </Link>
           {currentUser ? (
-            <span className="nav-link" onClick={signOutHandler}>SIGN OUT</span>
+            <span className="nav-link" onClick={signOutUser}>SIGN OUT</span>
           ) : (
             <Link to='/auth' className="nav-link">
               SIGN IN
