@@ -5,7 +5,7 @@ import {
 } from '../../utils/firebase/firebase.utils.js';
 
 import FormInput from '../form-input/form-input.component';
-import Button from '../button/button.component';
+import Button, { BUTTON_TYPE_CLASSES } from '../button/button.component';
 import { FcGoogle } from 'react-icons/fc';
 import './sign-in-form.styles.scss';
 
@@ -86,7 +86,7 @@ const SignInForm = () => {
           <Button 
             type="button"
             onClick={signInWithGoogle}
-            buttonType="google"
+            buttonType={BUTTON_TYPE_CLASSES.google}
           >
           Sign In With <FcGoogle size={20} />
           </Button>
