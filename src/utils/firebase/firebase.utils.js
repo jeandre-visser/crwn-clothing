@@ -53,13 +53,14 @@ export const addCollectionAndDocuments = async (
 ) => {
   const batch = writeBatch(db);
   const collectionRef = collection(db, collectionKey);
-
+  
   objectsToAdd.forEach((object) => {
-    const docRef = doc(collectionRef, object.title.toLowerCase());
-    batch.set(docRef, object);
+     const docRef = doc(collectionRef, object.title.toLowerCase());
+     batch.set(docRef, object);
   });
+
   await batch.commit();
-  console.log("done");
+  console.log('done');
 };
 
 export const getCategoriesAndDocuments = async () => {
@@ -78,7 +79,7 @@ export const getCategoriesAndDocuments = async () => {
 
 export const createUserDocumentFromAuth = async (
   userAuth,
-  additionalInfo = {}
+  additionalInformation = {}
 ) => {
   if (!userAuth) return;
 
@@ -97,7 +98,7 @@ export const createUserDocumentFromAuth = async (
         displayName,
         email,
         createdAt,
-        ...additionalInfo,
+        ...additionalInformation,
       });
     } catch (err) {
       console.log("error creating user", err.message);
