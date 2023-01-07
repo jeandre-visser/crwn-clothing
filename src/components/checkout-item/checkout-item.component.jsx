@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import "./checkout-item.styles.scss";
 import { useSelector, useDispatch } from "react-redux";
 import { selectCartItems } from "../../store/cart/cart.selector";
