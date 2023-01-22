@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, FormEvent, ChangeEvent } from 'react';
 import FormInput from '../form-input/form-input.component';
 import Button, { BUTTON_TYPE_CLASSES } from '../button/button.component';
 import { FcGoogle } from 'react-icons/fc';
@@ -28,7 +28,7 @@ const SignInForm = () => {
     dispatch(googleSignInStart());
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     try {
@@ -36,20 +36,11 @@ const SignInForm = () => {
 
       resetFormFields();
     } catch (err) {
-      switch (err.code) {
-        case 'auth/wrong-password':
-          alert('Incorrect password');
-          break;
-        case 'auth/user-not-found':
-          alert('User not found');
-          break;
-        default:
-          console.log(err.message);
-      }
+      console.log('user sign in error', err);
     }
   };
 
-  const handleChange = (e) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormFields({ ...formFields, [name]: value });
   };
