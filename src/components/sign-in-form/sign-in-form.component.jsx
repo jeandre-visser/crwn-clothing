@@ -4,13 +4,15 @@ import Button, { BUTTON_TYPE_CLASSES } from '../button/button.component';
 import { FcGoogle } from 'react-icons/fc';
 import './sign-in-form.styles.scss';
 import { useDispatch } from 'react-redux';
-import { googleSignInStart, emailSignInStart } from '../../store/user/user.action.js';
+import {
+  googleSignInStart,
+  emailSignInStart,
+} from '../../store/user/user.action';
 
 const defaultFormFields = {
   email: '',
   password: '',
-}
-
+};
 
 const SignInForm = () => {
   const dispatch = useDispatch();
@@ -20,24 +22,21 @@ const SignInForm = () => {
 
   const resetFormFields = () => {
     setFormFields(defaultFormFields);
-  }
-
+  };
 
   const signInWithGoogle = async () => {
     dispatch(googleSignInStart());
   };
-  
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-  
     try {
-      dispatch(emailSignInStart(email, password))
+      dispatch(emailSignInStart(email, password));
 
       resetFormFields();
     } catch (err) {
-
-      switch(err.code) {
+      switch (err.code) {
         case 'auth/wrong-password':
           alert('Incorrect password');
           break;
@@ -45,52 +44,51 @@ const SignInForm = () => {
           alert('User not found');
           break;
         default:
-          console.log(err.message)
+          console.log(err.message);
       }
     }
-  }
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormFields({ ...formFields, [name]: value })
-  }
+    setFormFields({ ...formFields, [name]: value });
+  };
 
   return (
-    <div className="sign-in-container">
+    <div className='sign-in-container'>
       <h2>Already Have An Account?</h2>
       <span>Sign in with your email and password</span>
       <form onSubmit={handleSubmit}>
-        <FormInput 
-          label="Email"
-          type="email" 
-          required onChange={handleChange} name="email"  
+        <FormInput
+          label='Email'
+          type='email'
+          required
+          onChange={handleChange}
+          name='email'
           value={email}
         />
-        
+
         <FormInput
-          label="Password"
-          type="password" 
-          required 
-          onChange={handleChange} name="password" 
+          label='Password'
+          type='password'
+          required
+          onChange={handleChange}
+          name='password'
           value={password}
         />
-        <div className="buttons-container">
-          <Button 
-            type="submit"
-          >
-            Sign In
-          </Button>
-          <Button 
-            type="button"
+        <div className='buttons-container'>
+          <Button type='submit'>Sign In</Button>
+          <Button
+            type='button'
             onClick={signInWithGoogle}
             buttonType={BUTTON_TYPE_CLASSES.google}
           >
-          Sign In With <FcGoogle size={20} />
+            Sign In With <FcGoogle size={20} />
           </Button>
         </div>
       </form>
     </div>
-  )
-}
+  );
+};
 
-export default SignInForm
+export default SignInForm;
