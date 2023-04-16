@@ -8,7 +8,6 @@ Check it out [here](https://crwn-clothing-jv.netlify.app/)!
 
 ### Quick Glimpse
 
-[Dashboard](https://github.com/jeandre-visser/crwn-clothing/blob/main/src/assets/crown-clothing-dashboard.png)
-[Sign In](https://github.com/jeandre-visser/crwn-clothing/blob/main/src/assets/crown-clothing-signin.png)
-[Cart](https://github.com/jeandre-visser/crwn-clothing/blob/main/src/assets/crown-clothing-cart.png)
-
+![Dashboard](https://github.com/jeandre-visser/crwn-clothing/blob/main/src/assets/crown-clothing-dashboard.png)
+![Sign In](https://github.com/jeandre-visser/crwn-clothing/blob/main/src/assets/crown-clothing-signin.png)
+![Cart](https://github.com/jeandre-visser/crwn-clothing/blob/main/src/assets/crown-clothing-cart.png)
